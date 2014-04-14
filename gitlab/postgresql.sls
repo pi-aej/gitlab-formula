@@ -1,5 +1,5 @@
 include:
-  - postgresql
+  - postgres
 
 gitlab-db:
   postgres_user.present:
