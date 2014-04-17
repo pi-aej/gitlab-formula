@@ -47,6 +47,7 @@ gitlab-deps:
       - patchutils
       - perl-Time-HiRes
       - pkgconfig
+	  - postfix
       - postgresql-devel
       - python-devel
       - rcs
