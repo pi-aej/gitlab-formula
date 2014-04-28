@@ -1,1 +1,17 @@
-Test file to check Gerrit sync
+Test file to check Gerrit sync:
+
+Creating post-receive hook on GitLab Server:
+
+Add the new remote (using the alias you just created) to your repository:
+
+>> cd /home/git/repositories/namespace/reponame.git
+
+git remote add --mirror=push gerrit gerritreponame:youruser/reponame.git
+Now that everything is in place you'll have to create the actual hook:
+
+>> cd /home/git/repositories/namespace/reponame.git/hooks
+>> echo "exec git push --quiet gerrit &" >> post-receive
+>> chmod 755 post-receive
+
+remote: error: server certificate verification failed. CAfile: /etc/ssl/certs/ca-certificates.crt CRLfile: none while accessing https://gerrit-testing-vm:8443/GitLab/info/refs[K
+remote: fatal: HTTP request failed[K
