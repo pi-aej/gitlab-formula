@@ -18,6 +18,7 @@ gitlab-ruby:
     - default: True
     - user: git
     - watch:
+      - user: git-user
       - pkg: rvm-pkgs
   gem.installed:
     - user: git
