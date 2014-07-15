@@ -24,7 +24,7 @@ gitlab-ruby:
     - user: git
     - ruby: ruby-{{ salt['pillar.get']('gitlab:rvm_ruby', '2.1.2') }}
     - watch:
-      - rvm: gitlab-ruby
+      - rvm: gitlab
 {% else %}
   {% if grains['os_family'] == 'Debian' %}
   pkg.installed:
