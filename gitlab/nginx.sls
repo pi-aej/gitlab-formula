@@ -12,7 +12,7 @@ nginx:
   service:
     - running
     - enable: True
-    - require:
+    - watch:
       - pkg: nginx
       - user: nginx
     - watch:
@@ -23,7 +23,7 @@ nginx:
     - name: {{ nginx_user }}
     - groups:
       - git
-    - require:
+    - watch:
       - pkg: nginx
 
 {%- if salt['pillar.get']('gitlab:https', false) %}
@@ -37,7 +37,7 @@ gitlab-nginx:
     - user: root
     - group: root
     - mode: 644
-    - require:
+    - watch:
       - pkg: nginx
       - file: nginx-ssl-key
       - file: nginx-ssl-cert
@@ -73,7 +73,7 @@ gitlab-nginx:
     - user: root
     - group: root
     - mode: 644
-    - require:
+    - watch:
       - pkg: nginx
 
 {% endif %}

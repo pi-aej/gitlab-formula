@@ -5,7 +5,7 @@ gitlab-db:
   postgres_user.present:
     - name: {{ salt['pillar.get']('gitlab:db_user') }}
     - password: {{ salt['pillar.get']('gitlab:db_pass') }}
-    - require:
+    - watch:
       - sls: postgres
       - service: postgresql
   postgres_database.present:

@@ -100,11 +100,11 @@ git:
     - provider: yumpkg
     {% endif %}
 
-{% if salt['pillar.get']('gitlab:use_rvm', False) %}
+{% if salt['pillar.get']('gitlab:use_rvm', False) %}    
+{% if grains['os_family'] == 'RedHat' %}
 rvm-deps:
   pkg.installed:
     - pkgs:
-    {% if grains['os_family'] == 'RedHat' %}
       - bash
       - bzip2
       - coreutils
@@ -115,5 +115,5 @@ rvm-deps:
       - sed
       - zlib
       - zlib-devel
-    {% endif %}
+{% endif %}
 {% endif %}

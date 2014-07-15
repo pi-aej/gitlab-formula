@@ -7,7 +7,7 @@ gitlab-git:
     - rev: {{ salt['pillar.get']('gitlab:gitlab_version') }}
     - user: git
     - target: /home/git/gitlab
-    - require:
+    - watch:
       - pkg: gitlab-deps
       - pkg: git
       - sls: gitlab.ruby

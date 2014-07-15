@@ -17,12 +17,12 @@ gitlab-ruby:
     - name: ruby-{{ salt['pillar.get']('gitlab:rvm_ruby', '2.1.0') }}
     - default: True
     - user: git
-    - require:
+    - watch:
       - pkg: rvm-pkgs
   gem.installed:
     - user: git
     - ruby: ruby-2.1.0
-    - require:
+    - watch:
       - rvm: gitlab-ruby
 {% else %}
   {% if grains['os_family'] == 'Debian' %}
@@ -32,7 +32,7 @@ gitlab-ruby:
       - ruby-dev
   gem.installed:
     - name: bundler
-    - require:
+    - watch:
       - pkg: gitlab-ruby
   {% elif grains['os_family'] == 'RedHat' %}
   pkg.installed:
