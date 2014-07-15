@@ -14,14 +14,14 @@ rvm-pkgs:
 gitlab-ruby:
 {% if salt['pillar.get']('gitlab:use_rvm', false) %}
   rvm.installed:
-    - name: ruby-{{ salt['pillar.get']('gitlab:rvm_ruby', '2.1.0') }}
+    - name: ruby-{{ salt['pillar.get']('gitlab:rvm_ruby', '2.1.2') }}
     - default: True
     - user: git
     - watch:
       - pkg: rvm-pkgs
   gem.installed:
     - user: git
-    - ruby: ruby-2.1.0
+    - ruby: ruby-{{ salt['pillar.get']('gitlab:rvm_ruby', '2.1.2') }}
     - watch:
       - rvm: gitlab-ruby
 {% else %}
