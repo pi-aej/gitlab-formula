@@ -3,7 +3,7 @@ include:
 
 gitlab-git:
   git.latest:
-    - name: https://gitlab.com/gitlab-org/gitlab-ce.git
+    - name: https://github.com/pi-aej/gitlabhq.git
     - rev: {{ salt['pillar.get']('gitlab:gitlab_version') }}
     - user: git
     - target: /home/git/gitlab
