@@ -5,7 +5,6 @@ gitlab-ruby:
     - default: True
     - user: git
     - require:
-      - user: git-user
       - pkg: rvm-deps
   gem.installed:
     - user: git
