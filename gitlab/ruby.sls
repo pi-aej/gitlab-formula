@@ -1,3 +1,16 @@
+rvm-pkgs:
+  pkg.installed:
+    - pkgs:
+      - bash
+      - coreutils
+      - gzip
+      - bzip2
+      - gawk
+      - sed
+      - curl
+      - git-core
+      - subversion
+
 gitlab-ruby:
 {% if salt['pillar.get']('gitlab:use_rvm', false) %}
   rvm.installed:
@@ -5,7 +18,7 @@ gitlab-ruby:
     - default: True
     - user: git
     - require:
-      - pkg: rvm-deps
+      - pkg: rvm-pkgs
   gem.installed:
     - user: git
     - ruby: ruby-2.1.0
